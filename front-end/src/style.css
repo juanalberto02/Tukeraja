@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.poppins {
+    font-family: "Poppins", sans-serif;
+}
+
+/* LANDING PAGE*/
+/*  */
+.pinkShape,
+.blueShape {
+  width: 30%;
+  position: absolute;
+}
+.pinkShape {
+  left: -9%;
+  top: -23%;
+  animation: moveAndRotate 15s infinite alternate;
+}
+.blueShape {
+  right: -2%;
+  top: 45%;
+  animation: moveAndRotate 15s infinite alternate;
+}
+.animate-disappear-pink{
+  animation: moveAndGonePink 3s forwards;
+}
+.animate-disappear-blue {
+  animation: moveAndGoneBlue 3s forwards;
+}
+.animationRight {
+  animation: bounceRightLeft 4s ease-in-out infinite;
+}
+.animate-disappear {
+  animation: fadeOut 2s forwards;
+}
+
+/* Animation */
+@keyframes bounceRightLeft {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px); 
+  }
+}
+@keyframes moveAndRotate {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateX(10%) translateY(20%) rotate(10deg);
+  }
+  100% {
+    transform: translateX(0) translateY(0) rotate(0);
+  }
+}
+@keyframes moveAndGonePink {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-50%) rotate(0);
+  }
+}
+@keyframes moveAndGoneBlue {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0);
+  }
+  100% {
+    transform: translateX(60%) translateY(60%) rotate(0);
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/*  */
+/* END OF LANDING PAGE */
+
+
+/* PREDICT PAGE */
+/*  */
+
+.gradient-pink {
+  background: linear-gradient(to bottom, #B83368, #EC99BB);
+}
+
+.gradient-pink-blue {
+  background: linear-gradient(to right, hsl(337, 86%, 67%), #6ab0ff);
+}
+.border-gradient {
+  border-image: linear-gradient(to right, hsl(337, 86%, 67%), #6ab0ff) 1;
+}
+.show-page{
+  animation: showPage 4.5s forwards;
+}
+.animate-up-down {
+  animation: upDown 6s infinite;
+}
+
+@keyframes upDown {
+  0% {
+    transform: translateY(-1rem);
+    animation-timing-function: ease-in-out;
+  }
+  50% {
+    transform: translateY(0.5rem);
+    animation-timing-function: ease-in-out;
+  }
+  100% {
+    transform: translateY(-1rem);
+  }
+}
+@keyframes showPage {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
