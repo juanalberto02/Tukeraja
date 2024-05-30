@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { arrowUpWhite } from '../assets'
+import { arrowRightGrey, arrowUpWhite, dropDownGrey, dropDownWhite, dummyDiagram } from '../assets'
 
 const Predict = (props) => {
 
@@ -9,7 +9,7 @@ const Predict = (props) => {
         if (element) {
             const timeoutId = setTimeout(() => {
                 element.classList.remove('show-page');
-            }, 4500);
+            }, 3000);
             return () => clearTimeout(timeoutId);
         }
     }, [props.paged]);
@@ -17,21 +17,21 @@ const Predict = (props) => {
 
     return (
         <>
-            <div className={`w-full h-screen ${props.paged == 1 ? "show-page" : ""}`}>
+            <div className={`w-[100vw] h-screen ${[1, 4, 5].includes(props.paged) ? "show-page" : "animate-disappear"}`}>
+                {/* Header */}
                 <div className="w-full flex items-center justify-between py-8">
-                    <span className='font-semibold text-2xl ml-12'>
+                    <span className='font-semibold text-2xl ml-12 cursor-pointer'>
                         Tukeraja<span className='text-[#EB4184]'>.</span></span>
                     <div className="flex items-center justify-center mr-12">
-                        <button className='mr-7'>Blogs</button>
-                        <button>About Us</button>
+                        <button onClick={() => props.handlePageChange(3)} className='mr-7'>Blogs</button>
+                        <button onClick={() => props.handlePageChange(2)}>About</button>
                     </div>
                 </div>
 
                 {/* Bagian body nya */}
                 <div className="w-full flex px-12">
-
                     {/* Left Body Part */}
-                    <div className="w-[35%] flex justify-center py-16 px-6 relative flex-col">
+                    <div className="w-[35%] h-full flex justify-center py-12 px-6 relative flex-col">
                         <div className="relative animate-up-down">
                             <div className="gradient-pink w-full h-[10rem] rounded-2xl"></div>
                             <div className="absolute w-full top-4  left-2">
@@ -67,14 +67,55 @@ const Predict = (props) => {
                                 Predict
                             </button>
                         </div>
-
-
                     </div>
+                    {/* End Left Body Part */}
 
 
                     {/* Right Body Part */}
+                    <div className="w-[65%] py-12 px-16">
+
+                        {/* Opsi currency */}
+                        <div className="w-full h-[4.5rem] flex">
+                            <div className="w-[13rem] h-full bg-[#53B9EA] rounded-xl">
+                                <div className="flex py-2 px-4 h-full items-center justify-between">
+                                    <span className='leading-[1.2rem]'>
+                                        <span className='text-[1.2rem] text-white'>IDR</span>
+                                        <br />
+                                        <span className='text-[0.8rem] text-white'>10.000,00</span>
+                                        <span className='font-sans ml-[0.2rem] text-[#A9DCF5] text-[0.8rem]'>Rupiah</span>
+                                    </span>
+                                    <img src={dropDownWhite} className='w-[1.8rem]' />
+                                </div>
+                            </div>
+                            <img src={arrowRightGrey} className='w-[3.5rem] mx-[1rem]' />
+                            <div className="w-[13rem] h-full border-[#d1d1d1] border-[0.1rem] rounded-xl mr-4">
+                                <div className="flex py-2 px-4 h-full items-center justify-between">
+                                    <span className='leading-[1.2rem]'>
+                                        <span className='text-[1.2rem] text-[#f35b95]'>USD</span>
+                                        <br />
+                                        <span className='text-[0.8rem] text-[#6c6c6c]'>1,00</span>
+                                        <span className='font-sans ml-[0.2rem] text-[#bdbdbd] text-[0.8rem]'>Dollar</span>
+                                    </span>
+                                    <img src={dropDownGrey} className='w-[1.8rem]' />
+                                </div>
+                            </div>
+                        </div>
+                        <h2 className='text-2xl font-medium mt-6'>
+                            Exchange Rate Diagram
+                        </h2>
+
+                        {/* Display diagram */}
+                        {/* <div className=""></div> */}
+                        <img src={dummyDiagram} className='mt-4' />
+
+                        {/* Penjelasan diagram */}
+                        <p className='text-sm mt-6 text-[#3a3a3a]'>
+                            "Explore the journey of currency values over time with our intuitive year-to-year exchange rate charts. Witness the fluctuations, spot trends, and gain insights into how global events shape currency values. Whether you're an investor tracking market movements or a traveler planning ahead, our charts provide a clear visualization of currency performance, empowering you to make informed decisions for the future."
+                        </p>
+                    </div>
+                    {/* End Right Body Part */}
                 </div>
-            </div>
+            </div >
         </>
     )
 }

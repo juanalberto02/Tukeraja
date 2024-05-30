@@ -7,7 +7,7 @@ const Landing = (props) => {
         if (element) {
             const timeoutId = setTimeout(() => {
                 element.style.display = 'none';
-            }, 2000); // 4 seconds to match the animation duration
+            }, 1500); // 4 seconds to match the animation duration
 
             // Clean up the timeout if the component unmounts
             return () => clearTimeout(timeoutId);

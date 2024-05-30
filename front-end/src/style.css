@@ -7,7 +7,6 @@
 .poppins {
     font-family: "Poppins", sans-serif;
 }
-
 /* LANDING PAGE*/
 /*  */
 .pinkShape,
@@ -26,16 +25,19 @@
   animation: moveAndRotate 15s infinite alternate;
 }
 .animate-disappear-pink{
-  animation: moveAndGonePink 3s forwards;
+  animation: moveAndGonePink 2s forwards;
 }
 .animate-disappear-blue {
-  animation: moveAndGoneBlue 3s forwards;
+  animation: moveAndGoneBlue 2s forwards;
 }
 .animationRight {
   animation: bounceRightLeft 4s ease-in-out infinite;
 }
+.animationLeft {
+  animation: bounceLeftRight 4s ease-in-out infinite;
+}
 .animate-disappear {
-  animation: fadeOut 2s forwards;
+  animation: fadeOut 1.5s forwards;
 }
 
 /* Animation */
@@ -45,6 +47,14 @@
   }
   50% {
     transform: translateX(20px); 
+  }
+}
+@keyframes bounceLeftRight {
+  0%, 100% {
+    transform: rotate(180deg) translateX(0); /* Rotate and stay at original position */
+  }
+  50% {
+    transform: rotate(180deg) translateX(20px); /* Rotate and move left */
   }
 }
 @keyframes moveAndRotate {
@@ -93,6 +103,12 @@
 .gradient-pink {
   background: linear-gradient(to bottom, #B83368, #EC99BB);
 }
+.text-gradient{
+  background: linear-gradient(to right, #EB4284, #1175EA);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .gradient-pink-blue {
   background: linear-gradient(to right, hsl(337, 86%, 67%), #6ab0ff);
@@ -101,12 +117,65 @@
   border-image: linear-gradient(to right, hsl(337, 86%, 67%), #6ab0ff) 1;
 }
 .show-page{
-  animation: showPage 4.5s forwards;
+  animation: showPage 3s forwards;
 }
 .animate-up-down {
-  animation: upDown 6s infinite;
+  animation: upDown 5s infinite;
+}
+.scroll-to-right{
+  animation: scrollToRight 2s forwards;
+  will-change: transform;
+}
+.scroll-to-left{
+  animation: scrollToLeft 2s forwards;
+  will-change: transform;
+}
+.scroll-to-home-f-about{
+  animation: scrollToHomeFromAbout 2s forwards;
+  will-change: transform;
+}
+.scroll-to-home-f-blogs{
+  animation: scrollToHomeFromBlogs 2s forwards;
+  will-change: transform;
 }
 
+
+@keyframes scrollToRight {
+  from {
+    transform: translatex(-100vw);
+    animation-timing-function: ease-in-out;
+  }
+  to{
+    transform: translatex(-200vw);
+  }
+}
+@keyframes scrollToLeft {
+  from {
+    transform: translatex(-100vw);
+    animation-timing-function: ease-in-out;
+  }
+  to {
+    transform: translatex(0);
+  }
+}
+@keyframes scrollToHomeFromAbout {
+  from {
+    transform: translatex(-200vw);
+    animation-timing-function: ease-in-out;
+  }
+  to {
+    transform: translatex(-100vw);
+  }
+}
+@keyframes scrollToHomeFromBlogs {
+  from {
+    transform: translatex(0vw);
+    animation-timing-function: ease-in-out;
+  }
+  to {
+    transform: translatex(-100vw);
+  }
+}
 @keyframes upDown {
   0% {
     transform: translateY(-1rem);
