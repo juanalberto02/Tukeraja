@@ -10,8 +10,6 @@ function App() {
     setPaged(newPage);
   };
 
-  console.log(paged);
-
   return (
     <>
       <div className="w-full h-screen overflow-hidden">
@@ -22,7 +20,7 @@ function App() {
               paged === 4 ? "scroll-to-home-f-about" :
                 paged === 5 ? "scroll-to-home-f-blogs" : "translate-x-[-100vw]"
           }`}>
-          <Blogs />
+          <Blogs handlePageChange={handlePageChange} paged={paged} />
           <Predict handlePageChange={handlePageChange} paged={paged} />
           <About handlePageChange={handlePageChange} paged={paged} />
         </div>

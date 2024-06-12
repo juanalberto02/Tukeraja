@@ -4,6 +4,18 @@
 @tailwind components;
 @tailwind utilities;
 
+*::-webkit-scrollbar {
+  width: 0;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
 .poppins {
     font-family: "Poppins", sans-serif;
 }
@@ -24,6 +36,7 @@
   top: 45%;
   animation: moveAndRotate 15s infinite alternate;
 }
+
 .animate-disappear-pink{
   animation: moveAndGonePink 2s forwards;
 }
@@ -37,7 +50,7 @@
   animation: bounceLeftRight 4s ease-in-out infinite;
 }
 .animate-disappear {
-  animation: fadeOut 1.5s forwards;
+  animation: fadeOut 1s forwards;
 }
 
 /* Animation */
@@ -117,25 +130,28 @@
   border-image: linear-gradient(to right, hsl(337, 86%, 67%), #6ab0ff) 1;
 }
 .show-page{
+  animation: showPage 1.5s forwards;
+}
+.show-page-firstime{
   animation: showPage 3s forwards;
 }
 .animate-up-down {
   animation: upDown 5s infinite;
 }
 .scroll-to-right{
-  animation: scrollToRight 2s forwards;
+  animation: scrollToRight 1.3s forwards;
   will-change: transform;
 }
 .scroll-to-left{
-  animation: scrollToLeft 2s forwards;
+  animation: scrollToLeft 1.3s forwards;
   will-change: transform;
 }
 .scroll-to-home-f-about{
-  animation: scrollToHomeFromAbout 2s forwards;
+  animation: scrollToHomeFromAbout 1.3s forwards;
   will-change: transform;
 }
 .scroll-to-home-f-blogs{
-  animation: scrollToHomeFromBlogs 2s forwards;
+  animation: scrollToHomeFromBlogs 1.3s forwards;
   will-change: transform;
 }
 
@@ -178,15 +194,15 @@
 }
 @keyframes upDown {
   0% {
-    transform: translateY(-1rem);
+    transform: translateY(-1vw);
     animation-timing-function: ease-in-out;
   }
   50% {
-    transform: translateY(0.5rem);
+    transform: translateY(0.5vw);
     animation-timing-function: ease-in-out;
   }
   100% {
-    transform: translateY(-1rem);
+    transform: translateY(-1vw);
   }
 }
 @keyframes showPage {
@@ -198,5 +214,34 @@
   }
   100%{
     opacity: 1;
+  }
+}
+
+
+/* BLOGS PAGES */
+/*  */
+.animate-scroll-down{
+  animation: animateDown 1.3s forwards;
+}
+.animate-scroll-top{
+  animation: animateTop 1.3s forwards;
+}
+
+@keyframes animateTop {
+  from {
+    transform: translateY(-100vh);
+    animation-timing-function: ease-in-out;
+  }
+  to{
+    transform: translateY(0);
+  }
+}
+@keyframes animateDown {
+  from {
+    transform: translateY(0);
+    animation-timing-function: ease-in-out;
+  }
+  to{
+    transform: translateY(-100vh);
   }
 }
