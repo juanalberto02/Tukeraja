@@ -83,7 +83,7 @@ def generate_forecast_and_interpretation(api_key, n_days, currency1, currency2):
     # Format the prompt
     prompt = (f"Give me one paragraph for interpretation for this exchange rate from {currency1} to {currency2} "
               f"and this is the data:\n{forecast_df}\n"
-              "Please suggest the optimum day we should go to exchange the money and why. Please give more interpretation from the data at least give us 3-4 sentences, maximum 400 character. And act like money changer that suggests us which days should we go to money changer. Please build all interpretation in a paragraph only. ")
+              "Please suggest the optimum day we should go to exchange the money and why. Please give more interpretation from the data at least give us 5-6 sentences. And act like money changer that suggests us which days should we go to money changer. Please build all interpretation in a paragraph only. ")
 
     # Generate text using the API
     generated_text = generate_text_with_prompt(api_key, prompt)
@@ -93,7 +93,7 @@ def generate_forecast_and_interpretation(api_key, n_days, currency1, currency2):
 
 if __name__ == "__main__":
     # Replace with your actual API key
-    your_api_key = "AIzaSyCRowvAYed5IwrQ_JIoN_2sAnR1PQ6KCHs"
+    your_api_key = "AIzaSyBoc1Eg8PmEO0qYdUh8fZvl8sNX7_kfpvg"
 
     # Get user input for the number of days and the currencies
     n_days = int(input("Enter the number of days for prediction: "))

@@ -1,10 +1,10 @@
-from flask import Flask, render_template, request, jsonify
-from flask_cors import CORS  # Import CORS from flask_cors
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 import currency
-from modelrun import getResult, generate_forecast_and_interpretation
-from flask import jsonify
+from modelrun import generate_forecast_and_interpretation
 import pandas as pd
-
+from apscheduler.schedulers.background import BackgroundScheduler
+import requests
 
 app = Flask(__name__)
 CORS(app)
@@ -39,7 +39,8 @@ def predict():
     days = request.args.get('days', default=10, type=int)
     currency1 = request.args.get('currency1', default='IDR', type=str)
     currency2 = request.args.get('currency2', default='SGD', type=str)
-    api_key = "AIzaSyCRowvAYed5IwrQ_JIoN_2sAnR1PQ6KCHs"
+    # Replace with your actual API key
+    api_key = "AIzaSyBoc1Eg8PmEO0qYdUh8fZvl8sNX7_kfpvg"
 
     # Generate forecast and interpretation
     forecast_df, generated_text = generate_forecast_and_interpretation(
@@ -56,5 +57,23 @@ def predict():
     return jsonify(response)
 
 
+def scheduled_load():
+    with app.app_context():
+        # Access the /load endpoint
+        try:
+            response = requests.get('http://127.0.0.1:5000/load')
+            if response.ok:
+                print('Successfully accessed /load endpoint')
+            else:
+                print('Failed to access /load endpoint')
+        except Exception as e:
+            print(f'Error accessing /load endpoint: {e}')
+
+
 if __name__ == "__main__":
+    # Set up the scheduler
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(scheduled_load, 'cron', hour=1, minute=0)
+    scheduler.start()
+
     app.run(debug=True)
