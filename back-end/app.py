@@ -7,7 +7,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 import requests
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 @app.route('/load', methods=['GET', 'POST'])
@@ -21,7 +21,7 @@ def index():
     currency1 = request.args.get('currency1', default='USD', type=str)
     currency2 = request.args.get('currency2', default='IDR', type=str)
 
-    csv_path = f'data/{currency1}.csv'
+    csv_path = f'./data/{currency1.lower()}.csv'
     currency_data = pd.read_csv(csv_path)
 
     currenctValue = currency_data[currency2].iloc[-1]
@@ -61,7 +61,7 @@ def scheduled_load():
     with app.app_context():
         # Access the /load endpoint
         try:
-            response = requests.get('http://127.0.0.1:5000/load')
+            response = requests.get('http://174.138.17.75:8080/load')
             if response.ok:
                 print('Successfully accessed /load endpoint')
             else:
@@ -76,4 +76,4 @@ if __name__ == "__main__":
     scheduler.add_job(scheduled_load, 'cron', hour=1, minute=0)
     scheduler.start()
 
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=8080)

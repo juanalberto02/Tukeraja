@@ -57,7 +57,7 @@ const PredictGraph = (props) => {
     ];
 
     return (
-        <div className='w-[50vw]'>
+        <div className='w-full'>
             <Chart options={options} series={series} type="line" height="280" />
         </div>
     );

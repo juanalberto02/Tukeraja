@@ -18,6 +18,15 @@ const Option = (props) => {
         'VND': 'Dong',
         'IDR': 'Rupiah'
     };
+    const formatNumber = (number) => {
+        if (number < 1000) {
+            return parseFloat(number.toPrecision(5));
+        } else if (number >= 1000) {
+            return new Intl.NumberFormat().format(number);
+        } else {
+            return number;
+        }
+    };
     const handleDivClick = (selector) => {
         if (selector === 1) {
             setShowOptions1(!showOptions1);
@@ -38,7 +47,7 @@ const Option = (props) => {
 
 
     return (
-        <div className="flex">
+        <div className="flex my-[2vw]">
             {/* Dropdown menu for currency 1 */}
             <div className="relative w-[13vw] bg-[#53B9EA] h-full rounded-[0.7vw] mr-[0.7vw]">
                 <div
@@ -58,7 +67,7 @@ const Option = (props) => {
                 </div>
                 {/* Dropdown options for currency 1 */}
                 {showOptions1 && (
-                    <div className="absolute bg-white text-[1vw] text-[#3c8fb8] border mt-[1vw] rounded-[0.4vw] shadow-lg z-10">
+                    <div className="absolute bg-white text-[1vw] text-[#3c8fb8] border mt-[1vw] h-[15vw] overflow-scroll rounded-[0.4vw] shadow-lg z-10">
                         {currencies1.map((currency, index) => (
                             <div
                                 key={index}
@@ -87,7 +96,7 @@ const Option = (props) => {
                     <span className='leading-[1.2vw]'>
                         <span className='text-[1.2vw] text-[#f35b95]'>{props.selectedCurrency2}</span>
                         <br />
-                        <span className='text-[0.8vw] text-[#6c6c6c]'>{props.currentValue}</span>
+                        <span className='text-[0.8vw] text-[#6c6c6c]'>{formatNumber(props.currentValue)}</span>
                         <span className='font-sans ml-[0.2vw] text-[#bdbdbd] text-[0.8vw]'>
                             {currencyLabels[props.selectedCurrency2]}
                         </span>
@@ -96,7 +105,7 @@ const Option = (props) => {
                 </div>
                 {/* Dropdown options for currency 2 */}
                 {showOptions2 && (
-                    <div className="absolute bg-white text-[1vw] text-[#f35b95] border mt-[1vw] rounded-[0.4vw] shadow-lg z-10">
+                    <div className="absolute bg-white text-[1vw] text-[#f35b95] border mt-[1vw] h-[15vw] overflow-scroll rounded-[0.4vw] shadow-lg z-10">
                         {currencies2.map((currency, index) => (
                             <div
                                 key={index}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { arrowUpWhite, dummyDiagram } from '../assets'
+import { arrowRight, arrowUpWhite, dummyDiagram } from '../assets'
 import { Option, PredictGraph } from './components';
 import { ReactTyped } from "react-typed";
 
@@ -8,11 +8,22 @@ import { ReactTyped } from "react-typed";
 const Predict = (props) => {
     const [selectedCurrency1, setSelectedCurrency1] = useState('USD');
     const [selectedCurrency2, setSelectedCurrency2] = useState('IDR');
+    const [current, setCurrent] = useState({ cur1: "USD", cur2: "IDR" });
     const [data, setData] = useState({
         currentValue: 0,
         date: null,
     });
     const [prediction, setPrediction] = useState({ interpretations: null, values: null });
+
+    const formatNumber = (number) => {
+        if (number < 1000) {
+            return parseFloat(number.toPrecision(5));
+        } else if (number >= 1000) {
+            return new Intl.NumberFormat().format(number);
+        } else {
+            return number;
+        }
+    };
 
     const handleCurrencyChange1 = (currency) => {
         setSelectedCurrency1(currency);
@@ -25,8 +36,15 @@ const Predict = (props) => {
     useEffect(() => {
         const fetchData = async (currency1, currency2) => {
             try {
-                const url = `http://127.0.0.1:5000/?currency1=${currency1}&currency2=${currency2}`;
-                const response = await fetch(url);
+
+                const url = `http://174.138.17.75:8080/?currency1=${currency1}&currency2=${currency2}`;
+                const response = await fetch(url, {
+                    method: 'GET',
+                    mode: 'cors', // Ensure CORS mode is set to 'cors'
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
                 if (response.ok) {
                     const data = await response.json();
                     setData(data); // Update the state with the fetched data
@@ -42,27 +60,44 @@ const Predict = (props) => {
         fetchData(selectedCurrency1, selectedCurrency2);
     }, [selectedCurrency1, selectedCurrency2]); // Update data when either selectedCurrency1 or selectedCurrency2 changes
 
-    const handlePredictClick = async () => {
-        try {
-            const days = document.getElementById("numberInput").value;
-            const timestamp = new Date().getTime(); // Generate a unique timestamp
-            const url = `http://127.0.0.1:5000/predict?days=${days}&currency1=${selectedCurrency1}&currency2=${selectedCurrency2}&timestamp=${timestamp}`;
-            const response = await fetch(url);
-            if (response.ok) {
-                const result = await response.json();
-                setPrediction(result); // Update the state with the fetched data
-            } else {
-                console.error('Failed to fetch prediction data');
+    const handlePredictClick = async (status) => {
+        const daysInput = document.getElementById("numberInput");
+        const days = daysInput ? daysInput.value : '7'; // Default to 7 days if daysInput is not found
+
+        if (status === "first" || window.confirm(`Create prediction from ${selectedCurrency1} to ${selectedCurrency2}?`)) {
+            try {
+                const timestamp = new Date().getTime(); // Generate a unique timestamp
+                const url = `http://174.138.17.75:8080/predict?days=${days}&currency1=${selectedCurrency1}&currency2=${selectedCurrency2}&timestamp=${timestamp}`;
+                const response = await fetch(url, {
+                    method: 'GET',
+                    mode: 'cors', // Ensure CORS mode is set to 'cors'
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                if (response.ok) {
+                    const result = await response.json();
+                    setPrediction(result); // Update the state with the fetched data
+                    setCurrent(prevState => ({
+                        ...prevState,
+                        cur1: selectedCurrency1,
+                        cur2: selectedCurrency2
+                    }));
+                } else {
+                    console.error('Failed to fetch prediction data');
+                }
+            } catch (error) {
+                console.error('Error fetching prediction data:', error);
             }
-        } catch (error) {
-            console.error('Error fetching prediction data:', error);
+
+            // Reset input value after processing
+            if (daysInput) daysInput.value = '';
         }
     };
-    useEffect(() => {
-        handlePredictClick();
-    }, []);
 
-    console.log(prediction)
+    useEffect(() => {
+        handlePredictClick("first");
+    }, []);
 
 
     return (
@@ -83,7 +118,7 @@ const Predict = (props) => {
                     {/* Bagian body nya */}
                     <div className="w-full flex px-[5vw]">
                         {/* Left Body Part */}
-                        <div className="w-[35%] h-full flex justify-center py-[4vw] px-[0.8vw] relative flex-col">
+                        <div className="w-[35%] h-full ml-[2vw] flex justify-center py-[4vw] px-[0.8vw] relative flex-col">
                             <div className="relative animate-up-down">
                                 <div className="gradient-pink w-full h-[12vw] rounded-[1vw]"></div>
                                 <div className="absolute w-full top-[0.7vw] left-[1vw]">
@@ -95,7 +130,7 @@ const Predict = (props) => {
                                         <p className='text-[1.7vw] flex items-center '>
                                             <span>{selectedCurrency1} 1</span>
                                             <img src={arrowUpWhite} className='rotate-90 w-[0.7vw] mx-[2vw]' />
-                                            <span>{selectedCurrency2} {data.currentValue}</span>
+                                            <span>{selectedCurrency2} {formatNumber(data.currentValue)}</span>
                                         </p>
                                         <div className="h-[0.1vw] w-[30%] bg-white my-[0.5vw]"></div>
                                         <p className='text-[1vw] flex items-center'>
@@ -104,22 +139,9 @@ const Predict = (props) => {
                                     </div>
                                 </div>
                             </div>
-                            <h2 className='text-[2vw] mt-[2vw] font-medium'>
+                            <h2 className='text-[2vw] mt-[4vw] font-medium'>
                                 Create Prediction 🧑🏻‍💻
                             </h2>
-                            <p className='mt-[1vw] text-[1vw]  text-[#f6468a]'>Please insert days</p>
-                            <input type="number" id="numberInput" min="1" max="10" placeholder='0' className='border-[0.1vw] p-[1vw] text-[1.2vw] mt-[1vw] rounded-[0.5vw] outline-none border-[#f35b95] h-[4vw] text-[#f6468a]' />
-                            <div className="w-full flex justify-end">
-                                <button type="button" onClick={handlePredictClick} className='mt-[0.7vw] w-[6vw] h-[2vw] border-[#f6468a] border-[0.1vw] rounded-[0.5vw] bg-[#f35b95] text-white hover:w-[7vw] duration-[0.5s] text-[1vw]'>
-                                    Predict
-                                </button>
-                            </div>
-                        </div>
-                        {/* End Left Body Part */}
-
-
-                        {/* Right Body Part */}
-                        <div className="w-[65%] py-[4vw] px-[5vw]">
                             {/* Currency Optio */}
                             <Option
                                 selectedCurrency1={selectedCurrency1}
@@ -129,17 +151,40 @@ const Predict = (props) => {
                                 currentValue={data.currentValue}
                             />
 
+                            <p className='text-[1vw] text-gray-600 font-semibold'>Please Insert Days :</p>
+                            <input type="number" id="numberInput" min="1" max="10" placeholder='0' className='border-[0.1vw] p-[1vw] text-[1.2vw] mt-[1vw] rounded-[0.5vw] outline-none h-[4vw]' />
+                            <div className="w-full flex justify-end">
+                                <button type="button" onClick={handlePredictClick} className='mt-[0.7vw] w-[6vw] h-[2.5vw] border-[#f6468a] border-[0.1vw] rounded-[0.5vw] bg-[#f35b95] text-white hover:w-[7vw] duration-[0.5s] text-[1vw]'>
+                                    Predict
+                                </button>
+                            </div>
+                        </div>
+                        {/* End Left Body Part */}
 
+
+                        {/* Right Body Part */}
+                        <div className="w-[60%] ml-[1vw] py-[2vw] px-[5vw]">
                             {prediction.values !== null ? (
                                 <>
-                                    <h2 className='text-[2vw] font-medium mt-[0.8vw] mt-[1vw]'>
+                                    <h2 className='text-[2vw] font-medium mt-[1vw]'>
                                         Exchange Rate Diagrams 📈
                                     </h2>
+                                    <div className="flex items-center my-[1vw]">
+                                        <div className="mr-[0.7vw] w-[0.6vw] h-[0.6vw] bg-[#f6468a]"></div>
+                                        <p className='mr-[1vw] text-[0.8vw] text-gray-500'>
+                                            {current.cur1}
+                                        </p>
+                                        <img src={arrowRight} className='mr-[1vw] w-[2vw]' />
+                                        <div className="mr-[0.7vw] w-[0.6vw] h-[0.6vw] bg-[#53B9EA]"></div>
+                                        <p className='mr-[1vw] text-[0.8vw] text-gray-500'>
+                                            {current.cur2}
+                                        </p>
+                                    </div>
                                     <div className="ml-[-1vw]">
                                         <PredictGraph prediction={prediction.values} />
                                     </div>
                                     <p className='text-[1vw] text-[#3a3a3a]'>
-                                        <b>Interpretation 📝 :</b>
+                                        <b>Interpretation 📝 : </b>
                                         <ReactTyped
                                             strings={[prediction.interpretation]}
                                             typeSpeed={20}
@@ -149,7 +194,7 @@ const Predict = (props) => {
                                     </p>
                                 </>
                             ) : (
-                                <h2 className='text-[2vw] font-medium mt-[0.8vw] mt-[2vw]'>
+                                <h2 className='text-[2vw] font-medium mt-[2vw]'>
                                     Let's make some prediction!
                                 </h2>
                             )}

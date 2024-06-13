@@ -1,7 +1,7 @@
 import { Amerika, Jepang, Malaysia, SaudiArabia, Singapura, Thailand, TimorLeste, Turki, UniEmiratArab, Vietnam } from "./assets/blogs";
 
 export const News = {
-    arabSaudi: {
+    SAR: {
         judul: "Arab Saudi: Pesona Sejarah dan Keagungan di Timur Tengah",
         isi: `Arab Saudi, sebuah negara dengan sejarah yang kaya dan situs-situs bersejarah yang menakjubkan. Dikenal sebagai pusat spiritual bagi umat Muslim di seluruh dunia, negara ini menawarkan pengalaman yang tak tertandingi bagi para pelancong. Mulai dari perjalanan spiritual ke Mekah dan Madinah hingga penemuan situs arkeologi di Al-Ula, Arab Saudi adalah destinasi yang harus dikunjungi setidaknya sekali seumur hidup.
                 <br /><br /> 
@@ -11,8 +11,9 @@ export const News = {
                 <br /><br /> 
                 3. Riyadh: Ibu kota modern dengan sentuhan tradisional. Jangan lewatkan kunjungan ke Masmak Fortress dan King Abdulaziz Historical Center. Masmak Fortress adalah benteng bersejarah yang memainkan peran penting dalam sejarah modern Arab Saudi. King Abdulaziz Historical Center menawarkan museum-museum yang menggambarkan sejarah dan budaya Arab Saudi, termasuk Museum Nasional Saudi yang menampilkan artefak dari era pra-Islam hingga zaman modern. Selain itu, Edge of the World, sebuah tebing tinggi yang menawarkan pemandangan gurun yang menakjubkan, menjadi tempat favorit para pelancong dan penduduk lokal untuk mendaki dan menikmati panorama alam yang luar biasa.`,
         gambar: SaudiArabia
+        ,cur : "SAR"
     },
-    malaysia: {
+    MYR: {
         judul: "Malaysia: Harmoni Budaya dan Keindahan Alam",
         isi: `Malaysia, negara yang kaya akan keberagaman budaya dan keindahan alam. Dari kota-kota metropolitan yang dinamis hingga hutan hujan tropis yang lebat, Malaysia menawarkan sesuatu untuk setiap pelancong.
                 <br /><br />
@@ -22,8 +23,9 @@ export const News = {
                 <br /><br />
                 3. Penang: Surga kuliner dengan warisan budaya yang kaya. Jelajahi George Town yang penuh warna dengan seni jalanan dan arsitektur kolonial. George Town adalah situs warisan dunia UNESCO yang menawarkan pemandangan kota kolonial dengan bangunan-bangunan bersejarah, kuil-kuil, dan masjid. Kunjungi Kek Lok Si, salah satu kuil Buddha terbesar di Asia Tenggara, dan Penang Hill, di mana Anda bisa menikmati pemandangan spektakuler dari puncak bukit. Jangan lupa untuk mencicipi makanan lokal seperti char kway teow, asam laksa, dan cendol di berbagai hawker center dan restoran di Penang.`,
                 gambar: Malaysia
+                ,cur : "MYR"
     },
-    singapura: {
+    SGD: {
         judul: "Singapura: Kota Futuristik dengan Sentuhan Tradisi",
         isi: `Singapura, kota yang memadukan modernitas dengan tradisi. Destinasi yang sempurna untuk para pelancong yang mencari pengalaman urban yang unik.
                 <br /><br />
@@ -37,8 +39,9 @@ export const News = {
                 <br /><br />
                 5. Kampong Glam: Kawasan yang kaya akan warisan Melayu dan Arab. Kunjungi Sultan Mosque yang megah dan jelajahi Haji Lane yang penuh warna dengan kafe-kafe unik, toko-toko vintage, dan mural-mural menarik. Kampong Glam juga dikenal dengan hidangan khas Timur Tengah dan Melayu yang menggugah selera.`,
                 gambar: Singapura
+                ,cur : "SGD"
     },
-    uniEmirat: {
+    AED: {
         judul: "Uni Emirat Arab: Keajaiban Arsitektur dan Kemewahan Modern",
         isi: `"Uni Emirat Arab (UEA) adalah simbol kemewahan dan keajaiban arsitektur modern. Dari gedung pencakar langit hingga padang pasir yang luas, UEA menawarkan pengalaman yang tak terlupakan.
                 <br /><br />
@@ -52,8 +55,9 @@ export const News = {
                 <br /><br />
                 5. Sharjah: Pusat budaya dan seni UEA dengan banyak museum dan galeri seni. Sharjah Museum of Islamic Civilization dan Sharjah Art Museum adalah dua tempat yang wajib dikunjungi. Selain itu, nikmati suasana tradisional di Blue Souk dan Central Souk yang menawarkan berbagai kerajinan tangan, tekstil, dan suvenir."`,
                 gambar: UniEmiratArab
+                ,cur : "AED"
     },
-    thailand: {
+    THB: {
         judul: "Thailand: Surga Tropis dengan Warisan Budaya yang Kaya",
         isi: `"Thailand, dikenal dengan pantai-pantainya yang indah, kuil-kuil yang mempesona, dan masakan yang menggugah selera. Negara ini adalah destinasi sempurna untuk mereka yang mencari petualangan dan relaksasi.
                 <br /><br />
@@ -67,8 +71,9 @@ export const News = {
                 <br /><br />
                 5. Pai: Sebuah kota kecil yang menawarkan suasana pedesaan yang tenang dan pemandangan alam yang indah. Pai terkenal dengan jembatan bambu yang ikonik, air terjun yang menakjubkan, dan sumber air panas alami. Pai juga menjadi tempat yang populer untuk para backpacker dengan kafe-kafe yang nyaman dan pasar malam yang penuh warna."`,
                 gambar: Thailand
+                ,cur : "THB"
     },
-    turki: {
+    TRY: {
         judul: "Turki: Perpaduan Keagungan Sejarah dan Modernitas",
         isi: `
                 Turki, sebuah negara yang terletak di persimpangan antara Eropa dan Asia, Dari keagungan sejarah kekaisaran Ottoman hingga modernitas kota-kota kosmopolitan, Turki menyajikan perpaduan yang menakjubkan antara Timur dan Barat.
@@ -86,8 +91,9 @@ export const News = {
                 Pamukkale, yang berarti ""benteng kapas"" dalam bahasa Turki, adalah situs alam yang menakjubkan. Air terjun travertin yang terbentuk dari endapan air panas menghasilkan kolam-kolam air hangat yang indah. Jangan lewatkan juga situs arkeologi Hierapolis, yang terletak di dekat Pamukkale.
                 "`,
                 gambar: Turki
+                ,cur : "TRY"
     },
-    jepang: {
+    JPY: {
         judul: "Jepang: Perpaduan Tradisi dan Modernitas yang Memukau",
         isi: `"Jepang, negara kepulauan yang terletak di Asia Timur, menawarkan pengalaman yang luar biasa bagi para pelancong. Dari kebudayaan tradisional yang kaya hingga kemajuan teknologi mutakhir, Jepang adalah destinasi yang harus dikunjungi setidaknya sekali seumur hidup.
             <br /><br />  
@@ -103,8 +109,9 @@ export const News = {
             4. Hiroshima dan Miyajima: Kenangan Sejarah dan Keindahan Alam
             Hiroshima, yang pernah menjadi saksi sejarah kelam perang dunia, kini menjadi simbol perdamaian. Kunjungi Taman Perdamaian Hiroshima dan Museum Memorial untuk menghormati para korban. Dari Hiroshima, Anda dapat melanjutkan perjalanan ke Pulau Miyajima, yang terkenal dengan Torii terapung di Kuil Itsukushima, salah satu pemandangan ikonik di Jepang."`,
             gambar: Jepang
+            ,cur : "JPY"
     },
-    timorLeste: {
+    USD: {
         judul: "Timor Leste: Keindahan Tersembunyi di Ujung Timur Kepulauan Nusantara",
         isi: `"Timor Leste, negara kecil di bagian timur Pulau Timor, menyimpan keindahan alam dan budaya yang masih belum banyak terekspos. Meski terbilang baru merdeka, negara ini menawarkan pengalaman wisata yang unik dan memikat bagi para pelancong yang mencari petualangan baru.
                 <br /><br />
@@ -121,8 +128,9 @@ export const News = {
                 Timor Leste juga memiliki kekayaan alam yang luar biasa, salah satunya adalah Taman Nasional Nino Konis Santana. Taman nasional ini menjadi habitat bagi berbagai satwa langka seperti rusa Timor, burung Timor, dan primata kuskus. Anda dapat melakukan treking di taman ini sambil menikmati keindahan alam pegunungan dan hutan hujan yang masih asri.
                 "`,
                 gambar: TimorLeste
+                ,cur : "USD"
     },
-    amerika: {
+    USD: {
         judul: "Amerika Serikat: Mozaik Budaya dan Keagungan Alam",
         isi: `"Amerika Serikat, negara adidaya dengan wilayah yang terbentang dari Samudra Atlantik hingga Samudra Pasifik, menawarkan pengalaman wisata yang beragam dan menakjubkan. Dari kota-kota kosmopolitan yang dinamis hingga keindahan alam yang memukau, Amerika Serikat adalah destinasi yang harus dikunjungi.
                 <br /><br />
@@ -139,8 +147,9 @@ export const News = {
                 San Francisco, kota di Teluk San Francisco, menawarkan pesona tersendiri dengan budaya yang kaya dan pemandangan alam yang menakjubkan. Jembatan Golden Gate yang ikonik, Alcatraz Island, dan Taman Nasional Muir Woods dengan pepohonan redwood raksasanya menjadi destinasi yang wajib dikunjungi. Jangan lewatkan pula untuk menikmati kuliner khas San Francisco dan menjelajahi kawasan Chinatown yang terkenal.
                 "`,
                 gambar: Amerika
+                ,cur : "USD"
     },
-    vietnam: {
+    VND: {
         judul: "Vietnam: Perpaduan Budaya, Sejarah, dan Keindahan Alam",
         isi: `"Vietnam, negara di Asia Tenggara yang dikenal dengan keindahan pemandangan alamnya dan warisan sejarah yang kaya. Dari kota-kota bersejarah hingga desa-desa tradisional, Vietnam menawarkan pengalaman wisata yang tak terlupakan.
                 <br /><br />
@@ -157,6 +166,7 @@ export const News = {
                 Sapa, sebuah desa pegunungan di wilayah Lao Cai, menawarkan keindahan alam yang memukau dengan pemandangan perbukitan dan sawah-sawah berundak yang menghijau. Anda dapat menjelajahi desa-desa tradisional suku minoritas dan menikmati kehidupan sederhana penduduk lokal. Jangan lewatkan pula kesempatan untuk mendaki gunung atau melakukan trekking di kawasan ini.
                 "`,
                 gambar: Vietnam
+                ,cur : "VND"
     },
 
 };
