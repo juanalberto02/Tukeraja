@@ -3,7 +3,7 @@
 ![Homepage Tukeraja](https://github.com/user-attachments/assets/c05abfa9-f6ee-4246-871f-efe8dcf8b5f4)
 ## Homepage Tukeraja
 
-![Forecasting Page](https://github.com/user-attachments/assets/5fff1707-0501-471c-921f-e98afcee68e4)
+![image](https://github.com/user-attachments/assets/0d2219ee-63d5-478c-80de-95c63729cf67)
 ## Forecasting Page
 
 ![image](https://github.com/user-attachments/assets/659afdd1-afb8-4511-8d93-f1486a91d395)
