@@ -1,13 +1,13 @@
 # Tukeraja
-
+## Homepage
 ![Homepage Tukeraja](https://github.com/user-attachments/assets/c05abfa9-f6ee-4246-871f-efe8dcf8b5f4)
-## Homepage Tukeraja
 
-![image](https://github.com/user-attachments/assets/0d2219ee-63d5-478c-80de-95c63729cf67)
 ## Forecasting Page
+![image](https://github.com/user-attachments/assets/0d2219ee-63d5-478c-80de-95c63729cf67)
 
-![image](https://github.com/user-attachments/assets/659afdd1-afb8-4511-8d93-f1486a91d395)
 ## Blogs Page
+![image](https://github.com/user-attachments/assets/659afdd1-afb8-4511-8d93-f1486a91d395)
+
 
 Tukeraja is a powerful and intuitive tool designed to help users find the best time to exchange currencies. By analyzing currency trends and predicting future exchange rates, Tukeraja empowers users to make informed financial decisions, whether they are investors, businesses, or travelers.
 
